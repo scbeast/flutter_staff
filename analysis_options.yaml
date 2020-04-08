@@ -1,6 +1,6 @@
 # https://dart.dev/guides/language/analysis-options
 
-include: package:pedantic/analysis_options.yaml
+#include: package:pedantic/analysis_options.yaml
 #include: package:effective_dart/analysis_options.yaml
 
 analyzer:
@@ -8,12 +8,15 @@ analyzer:
     - 'example/**'
     - 'build/**'
     - '**.g.dart'
+    - 'lib/generated_plugin_registrant.dart'
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
   errors:
     todo: info
+    directives_ordering: info
     unsafe_html: warning
+    prefer_relative_imports: warning
     avoid_relative_lib_imports: error
     avoid_slow_async_io: error
     avoid_types_as_parameter_names: error
@@ -21,6 +24,7 @@ analyzer:
     close_sinks: error
     valid_regexps: error
     no_logic_in_create_state: warning
+    empty_catches: warning
 
 # https://dart-lang.github.io/linter/lints/
 linter:
@@ -28,11 +32,37 @@ linter:
     #false
     public_member_api_docs: false # Only for package
     avoid_types_on_closure_parameters: false # Not as redundant as helpful and speaking
-    omit_local_variable_types: false
-    prefer_relative_imports: false
-    lines_longer_than_80_chars: false
+    omit_local_variable_types: false # I really like type annotation
+    lines_longer_than_80_chars: false # I have two eyes
 
     # true
+    avoid_null_checks_in_equality_operators: true
+    camel_case_extensions: true
+    prefer_adjacent_string_concatenation: true
+    prefer_collection_literals: true
+    prefer_conditional_assignment: true
+    prefer_for_elements_to_map_fromIterable: true
+    prefer_generic_function_type_aliases: true
+    prefer_single_quotes: true
+    prefer_spread_collections: true
+    use_function_type_syntax_for_parameters: true
+    prefer_iterable_whereType: true
+    curly_braces_in_flow_control_structures: true
+    library_names: true
+    library_prefixes: true
+    type_init_formals: true
+    unnecessary_null_in_if_null_operators: true
+    empty_constructor_bodies: true
+    slash_for_doc_comments: true
+    always_declare_return_types: true
+    always_require_non_null_named_parameters: true
+    annotate_overrides: true
+    prefer_relative_imports: true
+    avoid_catching_errors: true
+    avoid_catches_without_on_clauses: true
+    empty_catches: true
+    use_rethrow_when_possible: true
+    avoid_returning_null_for_future: true
     valid_regexps: true
     use_key_in_widget_constructors: true
     unrelated_type_equality_checks: true
@@ -79,7 +109,3 @@ linter:
     unnecessary_getters_setters: true
     unnecessary_statements: true
     directives_ordering: true
-    avoid_catching_errors: true
-    avoid_catches_without_on_clauses: true
-    empty_catches: true
-    use_rethrow_when_possible: true
